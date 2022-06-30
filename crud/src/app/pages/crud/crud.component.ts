@@ -33,7 +33,7 @@ export class CrudComponent implements OnInit {
   addClient(){
     this.listData.push(this.ClientData.value);
     this.ClientData.reset();
-    console.log('a')
+    alert("Cliente adicionado com sucesso!")
   }
   resetClient(){
     this.ClientData.reset();
@@ -42,6 +42,8 @@ export class CrudComponent implements OnInit {
     this.listData.forEach((v:any, i:number) =>{
       if(v == item) {
         this.listData.splice(i, 1)
+        alert("Cliente removido com sucesso!")
+
       }
     })
   }
