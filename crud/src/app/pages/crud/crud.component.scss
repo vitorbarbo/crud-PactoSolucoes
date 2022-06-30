@@ -1,0 +1,113 @@
+@mixin align-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin align-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body {
+    height: 92vh;
+    h1 {
+        font-size: 36px;
+        font-weight: 700
+    }
+    @include align-vertical();
+    .top-content {
+        @include align-vertical();
+        margin: 1em auto;
+
+    }
+    
+    .content {
+        @include align-vertical();
+        margin: 1em auto;
+        form {
+            @include align-vertical();
+            margin: 1em auto;
+            h2 {
+                font-size: 24px;
+            }
+            .flex-between {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2em;
+                width: 80vw;
+                
+            }
+            .buttonBx {
+                @include align-flex();
+                button {
+                    font-weight: 500;
+                    font-size: 16px;
+                    &:first-child {
+                        background-color: #81d742
+                    }
+                }
+            }
+            .disabled {
+                cursor: not-allowed;
+                opacity: .5;
+            }
+            mat-form-field {
+                width: 100%;
+            }
+        }
+        .tableBx {
+            height: 40vh;
+            overflow-y: auto;
+            width: 80vw;
+            table {
+                width: 100%;
+                text-align: center;
+                margin: 2em auto;
+                padding: 20px;
+                border-radius: 5px;
+                border: 1px solid;
+                tbody {
+                    min-height: 30vh;
+                    tr {
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .body {
+        margin-top: 1vh;
+        h1 {
+            font-size: 20px;
+        }
+        .content {
+            form {
+                
+                h2 {
+                    font-size: 20px;
+                }
+                .flex-between {
+                    flex-direction: column;
+                }
+                mat-form-field {
+                    width: 90vw;
+                }
+            }
+            .tableBx {
+                width: 95vw;
+                table {
+                    padding: 5px;
+                    text-align: initial;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+

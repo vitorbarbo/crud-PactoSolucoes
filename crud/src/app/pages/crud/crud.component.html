@@ -1,0 +1,75 @@
+<div class="body">
+
+<div class="top-content">
+    <h1>Exemplo de CRUD para Pacto Soluções</h1>
+</div>
+
+<div class="content">
+
+    <form [formGroup]="ClientData">
+
+        <h2>Formulário para cadastro de usuário</h2>
+
+        <div class="flex-between">
+
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Nome</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    name="nome"
+                    formControlName="Nome"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Data de nascimento</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    name="birthdate"
+                    formControlName="DataNascimento"
+                    mask="dd/MM/yyyy"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Classificação</mat-label>
+                <mat-select formControlName="Classificacao">
+                <mat-option value="Classificação 1">Classificação 1</mat-option>
+                <mat-option value="Classificação 2">Classificação 2</mat-option>
+                <mat-option value="Classificação 3">Classificação 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="buttonBx">
+                <button mat-raised-button (click)="addClient()" [disabled]="!ClientData.valid" [ngClass]="{disabled: !ClientData.valid}">Adicionar Cliente</button>
+                <button mat-button (click)="resetClient()">Resetar Valores</button>
+            </div>
+        </div>
+
+    </form>
+    <div class="tableBx">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Classificação</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listData">
+                    <td><span>{{item.Nome}}</span></td>
+                    <td><span>{{item.DataNascimento}}</span></td>
+                    <td><span>{{item.Classificacao}}</span></td>
+                    <td><button mat-raised-button (click)="removeClient(item)">Remover</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    </div>
+</div>
