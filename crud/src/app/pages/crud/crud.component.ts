@@ -8,8 +8,6 @@ export interface Table {
   actions: string;
 }
 
-
-
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
@@ -30,21 +28,43 @@ export class CrudComponent implements OnInit {
       Classificacao: ['', Validators.required]
     })
   }
+  
   addClient(){
     this.listData.push(this.ClientData.value);
     this.ClientData.reset();
     alert("Cliente adicionado com sucesso!")
   }
+
   resetClient(){
     this.ClientData.reset();
   }
+
   removeClient(item:any){
     this.listData.forEach((v:any, i:number) =>{
       if(v == item) {
         this.listData.splice(i, 1)
         alert("Cliente removido com sucesso!")
-
       }
     })
   }
+
+
+  /* em caso de consumo de API / endpoints seria realizada aqui uma função para requisição. Exemplo:
+  
+  endpoint() {
+    this.service.endpointFunction().subscribe(
+      (r:any) => {
+        console.log("resposta da requisição", r)
+      },
+      (e:any) => {
+        console.log("erro da requisição", e)
+        
+      }
+    )
+  }
+
+  a função em questão chama o serviço que seria criado utilizando ng g s services/serviceName
+  
+  
+  */
 }
